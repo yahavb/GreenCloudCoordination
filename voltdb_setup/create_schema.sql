@@ -4,7 +4,8 @@ datetime,
 region,
 total_job_workload, 
 load_factor,
-deadline}
+deadline,
+required_core_hour}
 
 create supply table{
 id,
@@ -14,7 +15,8 @@ type,
 cut-in,
 rated,
 cut-off,
-power-efficiency}
+power-efficiency,
+avail_cores_hour}
 
 create job table
 id,
