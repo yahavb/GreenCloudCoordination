@@ -1,1 +1,3 @@
-t
+!/bin/sh
+#Input file to the WordCount example:
+cat /dev/urandom | tr -dc 'a-zA-Z\n' | awk -v lineno=10 -v linelen=9999999999 -v wordmin=5 -v wordmax=99990 'BEGIN { j = 0; n = 0; line1 = ""; line2 = ""; wordlen = wordmax - wordmin; srand(); nwlen = wordmin + int(rand() * wordlen); w = ""; nw = 1 } { len = length($0); for (i = 1; i <= len; i++) { w = w substr($0, i, 1); if (nw == nwlen) { line1 = line2; if (n > 0) { line2 = line2 " " w; n += 1 + nw } else { line2 = w; n += nw }; if (n > linelen) { print line1; line2 = w; n = nw; j++; if (j >= lineno) { exit } }; w = ""; nw = 0; nwlen = wordmin + int(rand() * wordlen) }; nw++ } }'
