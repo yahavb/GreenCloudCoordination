@@ -22,4 +22,5 @@ create job table
 id,
 demand_id, 
 supply_id,
-status}
+status,
+core_hour}
