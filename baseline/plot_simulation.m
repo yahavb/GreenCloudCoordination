@@ -1,14 +1,14 @@
 %[Time,SolarAvailibilityRegion1MW,SolarAvailibilityRegion2MW,SoalrAvailibilityRegion3MW,WindAvailibilityRegion1MW,WindAvailibilityRegion2MW,WindAvailibilityRegion3MW] = importbaseline('baseline.csv',2, 49);
-baseline = importsimulation('baseline.csv',2, 49);
-baseline.Time=datetime(baseline.Time,'InputFormat','MM/dd/yy HH:mm');
-baseline=sortrows(baseline,'Time');
-x=baseline.Time;
-s1=baseline.SolarAvailibilityRegion1MW;
-s2=baseline.SolarAvailibilityRegion2MW;
-s3=baseline.SoalrAvailibilityRegion3MW;
-w1=baseline.WindAvailibilityRegion1MW;
-w2=baseline.WindAvailibilityRegion2MW;
-w3=baseline.WindAvailibilityRegion3MW;
+simulation = importsimulation('baseline.csv',2, 49);
+simulation.Time=datetime(simulation.Time,'InputFormat','MM/dd/yy HH:mm');
+simulation=sortrows(simulation,'Time');
+x=simulation.Time;
+s1=simulation.SolarAvailibilityRegion1MW;
+s2=simulation.SolarAvailibilityRegion2MW;
+s3=simulation.SoalrAvailibilityRegion3MW;
+w1=simulation.WindAvailibilityRegion1MW;
+w2=simulation.WindAvailibilityRegion2MW;
+w3=simulation.WindAvailibilityRegion3MW;
 figure
 subplot(2,1,1);
 [hAx,hAy1,hAy2]=plotyy(x,s1,[x,x],[s2,s3]);
@@ -27,7 +27,7 @@ hAy2(2).Marker = '*';
 %hAy1.LineStyle = '-.';
 hAy1.LineWidth = 1.75;
 hAy1.Marker = 'o';
-
+legend('Region1 PV','Region2 PV','Region3 PV');
 %legend('CA PV','AZ PV','NV PV');
 subplot(2,1,2);
 [hAxx,hAw1,hAw2]=plotyy(x,w1,[x,x],[w2,w3]);
@@ -40,3 +40,4 @@ hAw2(2).LineWidth = 0.55;
 hAw2(2).Marker = '*';
 hAw1.LineWidth = 1.75;
 hAw1.Marker = 'o';
+legend('Region4 Wind','Region5 Wind','Region6 Wind');
