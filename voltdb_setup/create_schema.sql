@@ -1,3 +1,4 @@
+file -inlinebatch END_OF_BATCH
 CREATE TABLE demand
 (
   id   varchar(50)    NOT NULL
@@ -58,3 +59,7 @@ CREATE TABLE job
     id
   )
 );
+
+PARTITION TABLE demand_status ON COLUMN datetime;
+PARTITION TABLE supply_status ON COLUMN datetime;
+END_OF_BATCH
